@@ -11,15 +11,16 @@
       <!-- กล้อง -->
       <a-entity camera></a-entity>
 
-      <!-- แสดงภาพใน AR -->
+      <!-- รูปภาพที่แสดงใน AR -->
       <a-entity id="imageEntity"
-                geometry="primitive: plane; height: 1.5; width: 2"
+                geometry="primitive: plane; height: 0.5; width: 0.7"  <!-- ขนาดเล็กลง -->
                 material="shader: flat;"
-                position="0 0 -3">
+                position="0 0 -2">  <!-- ระยะห่างจากกล้อง -->
       </a-entity>
     </a-scene>
 
     <script>
+      // เติม timestamp เพื่อหลีกเลี่ยงการ cache ของเบราว์เซอร์
       const timestamp = Date.now();
       const imageUrl = `https://apichart1996.github.io/latest.jpg?t=${timestamp}`;
       const entity = document.getElementById('imageEntity');
