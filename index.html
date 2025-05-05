@@ -2,29 +2,26 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>WebAR Model Viewer</title>
+    <title>WebAR Box Example</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar-nft.min.js"></script>
   </head>
   <body style="margin: 0; overflow: hidden;">
     <a-scene
-      vr-mode-ui="enabled: false"
       embedded
+      vr-mode-ui="enabled: false"
       arjs="sourceType: webcam; debugUIEnabled: false;"
-      renderer="logarithmicDepthBuffer: true;"
     >
-      <!-- โหลดโมเดลจากลิงก์ภายนอก (เปลี่ยน src ได้ตามต้องการ) -->
-      <a-assets>
-        <a-asset-item id="model" src="model.glb"></a-asset-item>
-      </a-assets>
-
-      <!-- วางโมเดล 3D ไว้ที่ตำแหน่ง 0 0 -3 (ตรงหน้ากล้อง) -->
-      <a-entity
-        gltf-model="#model"
-        scale="0.5 0.5 0.5"
-        position="0 0 -3"
-        animation="property: rotation; to: 0 360 0; loop: true; dur: 8000"
-      ></a-entity>
+      <!-- กล่อง 3D สีแดง วางตรงหน้ากล้อง -->
+      <a-box
+        position="0 0 -2"
+        rotation="0 45 0"
+        color="red"
+        depth="0.5"
+        height="0.5"
+        width="0.5"
+        animation="property: rotation; to: 0 405 0; loop: true; dur: 4000"
+      ></a-box>
 
       <a-camera></a-camera>
     </a-scene>
