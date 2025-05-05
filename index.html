@@ -32,7 +32,9 @@
   <button id="selectBtn">Select Image</button>
   <img id="preview" style="display:none;" />
   <p id="note">*หลังจากเลือกภาพแล้ว ให้อัปโหลดภาพด้วยชื่อ <strong>latest.jpg</strong> ไปที่ GitHub Pages ด้วยตัวเอง</p>
-  <button id="goToCamera" style="display:none;">Go to Camera</button>
+
+  <!-- ปุ่ม Go to Camera ที่จะอยู่ตลอดเวลา -->
+  <button id="goToCamera">Go to Camera</button>
 
   <script>
     const selectBtn = document.getElementById('selectBtn');
@@ -40,15 +42,26 @@
     const preview = document.getElementById('preview');
     const goToCamera = document.getElementById('goToCamera');
 
-    selectBtn.onclick = () => {
-      window.location.href = "https://github.com/apichart1996/apichart1996.github.io";
+    // เปิดตัวเลือกไฟล์เมื่อกด Select Image
+    selectBtn.onclick = () => imageInput.click();
+
+    // เมื่อเลือกไฟล์จาก input
+    imageInput.onchange = (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        preview.src = event.target.result;
+        preview.style.display = 'block';
+        goToCamera.style.display = 'inline-block'; // ให้ปุ่ม Go to Camera ปรากฏขึ้น
+      };
+      reader.readAsDataURL(file);
     };
 
-    // หลังจากเด้งไป GitHub, ผู้ใช้สามารถอัปโหลดไฟล์ `latest.jpg` ที่นั่นเอง
-    // ถ้าผู้ใช้อัปโหลดเสร็จ จะมีปุ่ม "Go to Camera" ให้คลิก
-
+    // เมื่อคลิกปุ่ม Go to Camera
     goToCamera.onclick = () => {
-      window.location.href = 'camera.html';
+      window.location.href = 'camera.html';  // ไปที่หน้า camera.html
     };
   </script>
 
