@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>AR Image Viewer</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script>
+  </head>
+  <body style="margin:0; overflow:hidden;">
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+      <!-- กล้อง -->
+      <a-entity camera></a-entity>
+
+      <!-- แสดงภาพใน AR -->
+      <a-entity id="imageEntity"
+                geometry="primitive: plane; height: 1.5; width: 2"
+                material="shader: flat;"
+                position="0 0 -3">
+      </a-entity>
+    </a-scene>
+
+    <script>
+      const timestamp = Date.now();
+      const imageUrl = `https://apichart1996.github.io/latest.jpg?t=${timestamp}`;
+      const entity = document.getElementById('imageEntity');
+      entity.setAttribute('material', `shader: flat; src: ${imageUrl}`);
+    </script>
+  </body>
+</html>
