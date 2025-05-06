@@ -13,18 +13,10 @@
 
       <!-- รูปภาพที่แสดงใน AR -->
       <a-entity id="imageEntity"
-                geometry="primitive: plane; width: 1.2; height: 0.6" <!-- ขนาดสี่เหลี่ยมผืนผ้า -->
-                material="shader: flat;"
-                position="0 0 -2">  <!-- ตำแหน่งกลางหน้าจอ -->
+                geometry="primitive: plane; width: 1.0; height: 0.5"
+                material="shader: flat; src: https://apichart1996.github.io/latest.jpg"
+                position="0 0 -2">
       </a-entity>
     </a-scene>
-
-    <script>
-      // เติม timestamp เพื่อหลีกเลี่ยงการ cache ของเบราว์เซอร์
-      const timestamp = Date.now();
-      const imageUrl = `https://apichart1996.github.io/latest.jpg`;
-      const entity = document.getElementById('imageEntity');
-      entity.setAttribute('material', `shader: flat; src: ${imageUrl}`);
-    </script>
   </body>
 </html>
