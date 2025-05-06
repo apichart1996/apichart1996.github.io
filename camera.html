@@ -10,18 +10,20 @@
     </style>
   </head>
   <body>
-    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
-      
+    <a-scene
+      embedded
+      vr-mode-ui="enabled: false"
+      arjs="sourceType: webcam; debugUIEnabled: false;"
+    >
       <!-- กล้อง -->
       <a-entity camera></a-entity>
 
-      <!-- รูปภาพลอยอยู่ในโลก ไม่ตามกล้อง -->
+      <!-- รูปภาพแบบ world-fixed (ไม่ขยับตามกล้อง) -->
       <a-image src="https://apichart1996.github.io/latest.jpg"
-               width="1.2"
-               height="0.7"
-               position="0 0 -3">
+               width="0.5"   <!-- ขนาดประมาณกรอบแดง -->
+               height="0.35"
+               position="0 0 -2"> <!-- ลอยอยู่ด้านหน้า -->
       </a-image>
-
     </a-scene>
   </body>
 </html>
