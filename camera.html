@@ -2,21 +2,26 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>AR Image Viewer</title>
+    <title>Camera AR View</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script>
+    <style>
+      body { margin: 0; overflow: hidden; }
+    </style>
   </head>
-  <body style="margin:0; overflow:hidden;">
+  <body>
     <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+      
       <!-- กล้อง -->
       <a-entity camera></a-entity>
 
-      <!-- รูปภาพที่แสดงใน AR -->
-      <a-entity id="imageEntity"
-                geometry="primitive: plane; width: 1.0; height: 0.5"
-                material="shader: flat; src: https://apichart1996.github.io/latest.jpg"
-                position="0 0 -2">
-      </a-entity>
+      <!-- รูปภาพลอยอยู่ในโลก ไม่ตามกล้อง -->
+      <a-image src="https://apichart1996.github.io/latest.jpg"
+               width="1.2"
+               height="0.7"
+               position="0 0 -3">
+      </a-image>
+
     </a-scene>
   </body>
 </html>
